@@ -28,7 +28,7 @@
 	<property name="libs.dir" value="lib"/>
 	<property name="docs.dir" value="doc"/>
 	<property name="root.package" value="nl.nekoconeko.configmode"/>
-	<property name="entry.point" value="Entry"/>
+	<property name="executable" value="configmode"/>
 
 	<available file=".git" type="dir" property="git.present"/>
 
@@ -105,7 +105,7 @@
 	</target>
 	
 	<!-- Create a clean dist directory -->
-	<target name="dist" description="Create a clean dist directory">
+	<target name="dist" depends="compile" description="Create a clean dist directory">
 		<delete dir="${dist.dir}"/>
 		<mkdir dir="${dist.dir}"/>
 		<mkdir dir="${dist.dir}/${docs.dir}"/>
@@ -121,7 +121,7 @@
 
 		<copy file="README.md" tofile="${dist.dir}/README.md" />
 
-		<jar destfile="${dist.dir}/${executable}.jar" basedir="${class.root}">
+		<jar destfile="${dist.dir}/${executable}-${version}.jar" basedir="${class.root}">
 			<manifest>
 				<attribute name="Implementation-Vendor" value="Nekoconeko.nl"/>
 				<attribute name="Implementation-Title" value="${executable}"/>
@@ -131,6 +131,48 @@
 				<attribute name="Class-Path" value="${jar.class.path}"/>
 			</manifest>
 		</jar>
+		<jar destfile="${dist.dir}/external-libs-sources.jar">
+			<zipgroupfileset dir="${libs.dir}">
+				<include name="*.jar"/>
+				<exclude name="*-sources.jar"/>
+				<exclude name="*-javadoc.jar"/>
+			</zipgroupfileset>
+			<zipgroupfileset dir="${libs.dir}">
+				<include name="*-sources.jar"/>
+			</zipgroupfileset>
+		</jar>
+		<jar destfile="${dist.dir}/${executable}-${version}-complete.jar" basedir="${class.root}">
+			<zipgroupfileset dir="${libs.dir}">
+				<include name="*.jar"/>
+				<exclude name="*-sources.jar"/>
+				<exclude name="*-javadoc.jar"/>
+			</zipgroupfileset>
+			<manifest>
+				<attribute name="Implementation-Vendor" value="Nekoconeko.nl"/>
+				<attribute name="Implementation-Title" value="${executable}"/>
+				<attribute name="Implementation-Version" value="${version}"/>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Sealed" value="false"/>
+				<attribute name="Class-Path" value="${jar.class.path}"/>
+			</manifest>
+		</jar>
+		<jar destfile="${dist.dir}/${executable}-${version}-complete-sources.jar">
+			<fileset dir="${source.root}">
+				<include name="**/*.java"/>
+			</fileset>
+			<zipfileset src="${dist.dir}/external-libs-sources.jar">
+				<include name="**/*.java"/>
+			</zipfileset>
+			<manifest>
+				<attribute name="Implementation-Vendor" value="Nekoconeko.nl"/>
+				<attribute name="Implementation-Title" value="${executable}"/>
+				<attribute name="Implementation-Version" value="${version}"/>
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Sealed" value="false"/>
+				<attribute name="Class-Path" value="${jar.class.path}"/>
+			</manifest>
+		</jar>
+
 	</target>
 
 	<target name="bump-version" depends="git-revision" description="Bump the BUILD_VERSION version number">
