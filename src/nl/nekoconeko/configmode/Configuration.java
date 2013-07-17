@@ -21,10 +21,6 @@ package nl.nekoconeko.configmode;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-
 public abstract class Configuration {
 
 	private static Map<String, Object> configuration = new HashMap<String, Object>();
@@ -43,11 +39,6 @@ public abstract class Configuration {
 		} else {
 			return null;
 		}
-	}
-
-	public static CommandLine parseCli(String mode, String[] args) throws ParseException {
-		Options opt = ConfigModes.getMode(mode);
-		return new IgnorePosixParser(true).parse(opt, args);
 	}
 
 	public abstract String toString();

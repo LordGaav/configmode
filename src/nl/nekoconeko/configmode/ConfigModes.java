@@ -18,14 +18,15 @@
  */
 package nl.nekoconeko.configmode;
 
+import java.util.HashMap;
 import java.util.Map;
 import nl.nekoconeko.configmode.Version;
 import org.apache.commons.cli.HelpFormatter;
 
 public class ConfigModes {
 
-	private static Map<String, ConfigMode> modeMap;
-	private static Version version;
+	protected static Map<String, ConfigMode> modeMap = new HashMap<String, ConfigMode>();
+	protected static Version version;
 
 	protected static void addMode(String type, ConfigMode mode) {
 		ConfigModes.getModes().put(type, mode);
