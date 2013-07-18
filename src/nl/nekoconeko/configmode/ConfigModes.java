@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import nl.nekoconeko.configmode.Version;
 import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
 
 public class ConfigModes {
 
@@ -58,7 +59,7 @@ public class ConfigModes {
 		ConfigMode all = new ConfigMode();
 
 		for (ConfigMode mode : ConfigModes.modeMap.values()) {
-			for (ConfigParameter opt : mode.getAllOptions()) {
+			for (Option opt : mode.getAllOptions()) {
 				opt.setRequired(false);
 				all.addOption(opt);
 			}
