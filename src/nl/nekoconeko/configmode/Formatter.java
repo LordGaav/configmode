@@ -27,7 +27,7 @@ public class Formatter {
 	private static List<String> examples = new ArrayList<String>();
 	private static Version version;
 	
-	protected static void setVersionInfo(Version version) {
+	public static void setVersionInfo(Version version) {
 		Formatter.version = version;
 	}
 
