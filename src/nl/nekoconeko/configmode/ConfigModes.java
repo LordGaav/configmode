@@ -32,6 +32,16 @@ public class ConfigModes {
 		ConfigModes.getModes().put(type, mode);
 	}
 	
+	protected static void addModes(Map<String, ConfigMode> modes) {
+		for (String type : modes.keySet()) {
+			ConfigModes.addMode(type, modes.get(type));
+		}
+	}
+
+	protected static void removeMode(String type) {
+		ConfigModes.getModes().remove(type);
+	}
+
 	protected static void setVersionInfo(Version version) {
 		ConfigModes.version = version;
 	}
