@@ -73,7 +73,7 @@ public class ConfigModes {
 
 		for (String mode : ConfigModes.getModes().keySet()) {
 			format.setSyntaxPrefix(String.format("%s mode: ", mode.toString()));
-			format.printHelp(ConfigModes.version.PROJECT_NAME, ConfigModes.getMode(mode), true);
+			format.printHelp(ConfigModes.version.getProjectName(), ConfigModes.getMode(mode), true);
 		}
 	}
 
@@ -82,6 +82,6 @@ public class ConfigModes {
 		if (!mode.equalsIgnoreCase("root")) {
 			format.setSyntaxPrefix(String.format("Usage for %s mode: ", mode.toString()));
 		}
-		format.printHelp(ConfigModes.version.PROJECT_NAME, ConfigModes.getMode(mode), true);
+		format.printHelp(ConfigModes.version.getProjectName(), ConfigModes.getMode(mode), true);
 	}
 }

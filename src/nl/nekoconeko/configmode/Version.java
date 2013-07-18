@@ -18,7 +18,7 @@
  */
 package nl.nekoconeko.configmode;
 
-public abstract class Version {
+public class Version {
 	/**
 	 * Official name of the project
 	 */
@@ -31,4 +31,16 @@ public abstract class Version {
 	 * Actual Git revision according to `git describe` during bumping
 	 */
 	public final String BUILD_VERSION = "000000";
+
+	public String getProjectName() {
+		return PROJECT_NAME;
+	}
+
+	public String getReleaseVersion() {
+		return RELEASE_VERSION;
+	}
+
+	public String getBuildVersion() {
+		return BUILD_VERSION;
+	}
 }

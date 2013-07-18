@@ -56,8 +56,8 @@ public class Formatter {
 	public static String getHeader() {
 		StringBuilder header = new StringBuilder();
 
-		header.append(String.format("%s version %s\n", Formatter.version.PROJECT_NAME, Formatter.version.RELEASE_VERSION));
-		header.append(String.format("BUILD_VERSION: %s\n", Formatter.version.BUILD_VERSION));
+		header.append(String.format("%s version %s\n", Formatter.version.getProjectName(), Formatter.version.getReleaseVersion()));
+		header.append(String.format("BUILD_VERSION: %s\n", Formatter.version.getBuildVersion()));
 
 		return header.toString();
 	}
