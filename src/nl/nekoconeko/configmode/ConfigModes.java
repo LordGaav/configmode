@@ -79,7 +79,7 @@ public class ConfigModes {
 
 	public static void printConfigModeHelp(String mode) {
 		HelpFormatter format = new HelpFormatter();
-		if (mode.equalsIgnoreCase("root")) {
+		if (!mode.equalsIgnoreCase("root")) {
 			format.setSyntaxPrefix(String.format("Usage for %s mode: ", mode.toString()));
 		}
 		format.printHelp(ConfigModes.version.PROJECT_NAME, ConfigModes.getMode(mode), true);
