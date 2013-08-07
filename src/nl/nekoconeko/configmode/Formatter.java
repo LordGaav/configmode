@@ -31,10 +31,12 @@ public class Formatter {
 		Formatter.version = version;
 	}
 
-	public static void usageError(String error, String mode) {
+	public static void usageError(String error, String mode, boolean die) {
 		Formatter.printErrorLine(error + "\n");
 		ConfigModes.printConfigModeHelp(mode);
-		System.exit(-1);
+		if (die) {
+			System.exit(-1);
+		}
 	}
 	
 	public static void addExample(String example) {
