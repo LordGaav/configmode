@@ -25,6 +25,10 @@ public abstract class Configuration {
 
 	private static Map<String, Object> configuration = new HashMap<String, Object>();
 
+	public static void clear() {
+		Configuration.configuration.clear();
+	}
+
 	public static boolean has(String key) {
 		return Configuration.configuration.containsKey(key);
 	}
