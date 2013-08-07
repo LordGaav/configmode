@@ -20,6 +20,7 @@ package nl.nekoconeko.configmode;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public abstract class Configuration {
 
@@ -35,6 +36,12 @@ public abstract class Configuration {
 	
 	public static Object get(String key) {
 		return Configuration.valueOrNull(key);
+	}
+
+	protected static void set(Map<String, Object> values) {
+		for (Entry<String, Object> entry : values.entrySet()) {
+			Configuration.set(entry.getKey(), entry.getValue());
+		}
 	}
 
 	protected static void set(String key, Object value) {
