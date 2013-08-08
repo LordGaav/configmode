@@ -30,7 +30,7 @@
 	<property name="root.package" value="nl.nekoconeko.configmode"/>
 	<property name="executable" value="configmode"/>
 
-	<available file=".git" type="dir" property="git.present"/>
+	<available file=".git" property="git.present"/>
 
 	<path id="libraries">
 		<pathelement location="${class.root}"/> 
