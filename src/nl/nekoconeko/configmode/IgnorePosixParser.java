@@ -24,6 +24,7 @@ import java.util.ListIterator;
 
 import org.apache.commons.cli.MissingOptionException;
 import org.apache.commons.cli.Option;
+import org.apache.commons.cli.OptionGroup;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 
@@ -66,6 +67,13 @@ public class IgnorePosixParser extends PosixParser {
 				} else if (opt.getClass().equals(Option.class)) {
 					if (Configuration.has(((Option) opt).getLongOpt())) {
 						it.remove();
+					}
+				} else if (opt.getClass().equals(OptionGroup.class)) {
+					for (Object o : ((OptionGroup)opt).getOptions()) {
+						if (Configuration.has(((Option)o).getLongOpt())) {
+							it.remove();
+							break;
+						}
 					}
 				}
 			}
