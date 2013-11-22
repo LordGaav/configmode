@@ -173,7 +173,7 @@
 	</target>
 
 	<target name="bump-version" depends="git-revision" description="Bump the BUILD_VERSION version number">
-		<replaceregexp file="${source.root}/nl/cyso/vcloud/client/Version.java">
+		<replaceregexp file="${source.root}/nl/nekoconeko/configmode/Version.java">
 			<regexp pattern="BUILD_VERSION = &quot;.*&quot;;"/>
 			<substitution expression="BUILD_VERSION = &quot;${version}&quot;;"/>
 		</replaceregexp>

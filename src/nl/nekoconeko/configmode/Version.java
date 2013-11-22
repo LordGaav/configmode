@@ -24,7 +24,7 @@ public class Version {
 	 */
 	public final String PROJECT_NAME = "configmode";
 	/**
-	 * Official release version of vcloud-login
+	 * Official release version
 	 */
 	public final String RELEASE_VERSION = "0.0";
 	/**
